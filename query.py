@@ -10,6 +10,7 @@ def main_menu():
         print("Menu Options:")
         print("1. View Movies")
         print("2. Search for a Movie")
+        print("3. List All Movie Names")
         print("q. Quit")
 
         # Get user's choice
@@ -30,6 +31,14 @@ def main_menu():
                     print(f"Cast: {', '.join(movie['cast'])}")
             else:
                 print("No matching movies found.")
+        elif choice == "3":
+    movie_names = [movie['name'] for movie in movies.get_movies()]
+    if movie_names:
+        print("List of Movie Names:")
+        for name in movie_names:
+            print(name)
+    else:
+        print("No movies in the database.")
         elif choice == "q":
             print("Goodbye!")
             break
