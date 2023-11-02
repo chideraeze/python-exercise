@@ -11,6 +11,7 @@ def main_menu():
         print("1. View Movies")
         print("2. Search for a Movie")
         print("3. List All Movie Names")
+        print("4. Search Movies by Name")
         print("q. Quit")
 
         # Get user's choice
@@ -39,6 +40,15 @@ def main_menu():
             print(name)
     else:
         print("No movies in the database.")
+        elif choice == "4":
+    search_word = input("Enter a search word: ")
+    matching_movies = [movie for movie in movies.get_movies() if search_word.lower() in movie['name'].lower()]
+    if matching_movies:
+        print("Matching Movies:")
+        for movie in matching_movies:
+            print(movie['name'])
+    else:
+        print("No matching movies found.")
         elif choice == "q":
             print("Goodbye!")
             break
