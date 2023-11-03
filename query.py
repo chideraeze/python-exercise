@@ -12,6 +12,7 @@ def main_menu():
         print("2. Search for a Movie")
         print("3. List All Movie Names")
         print("4. Search Movies by Name")
+        print("5. Search Movies by Cast")
         print("q. Quit")
 
         # Get user's choice
@@ -49,6 +50,20 @@ def main_menu():
             print(movie['name'])
     else:
         print("No matching movies found.")
+        elif choice == "5":
+    search_word = input("Enter a search word: ")
+    matching_movies = [movie for movie in movies.get_movies() if any(search_word.lower() in actor.lower() for actor in movie['cast'])]
+    matching_actors = list(set([actor for movie in matching_movies for actor in movie['cast'] if search_word.lower() in actor.lower()]))
+    if matching_movies:
+        print("Matching Movies:")
+        for movie in matching_movies:
+            print(movie['name'])
+        
+        print("Matching Actors/Actresses:")
+        for actor in matching_actors:
+            print(actor)
+    else:
+        print("No matching movies or cast members found.")
         elif choice == "q":
             print("Goodbye!")
             break
